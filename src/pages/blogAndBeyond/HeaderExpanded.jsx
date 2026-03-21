@@ -14,6 +14,7 @@ export const Header = ({ setExpandedId }) => {
           className={s.logo3}
           onClick={() => setExpandedId(null)} // <-- Go back to Blog
           style={{ cursor: "pointer" }}
+          alt="previous"
         />
         <img
           src="/images/btn_go-back.png"

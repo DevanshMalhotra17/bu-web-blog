@@ -22,7 +22,7 @@ export default function BlogAndBeyond() {
     <Layout
       className={s.container}
       Header={HeaderComponent}
-      showFooter={false}
+      showFooter={true}
     >
       {expandedId ? (
         <BlogExpanded expandedId={expandedId} setExpandedId={setExpandedId} />

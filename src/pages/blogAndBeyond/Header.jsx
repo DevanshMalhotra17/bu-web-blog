@@ -3,8 +3,6 @@ import s from "./styles.module.css";
 export const Header = () => {
   return (
     <header className={s.header}>
-      {/* Move to the trapezoid thing. */}
-
       <img
         src="/images/weare-logo.png"
         alt="we are a building-u blog"
@@ -17,7 +15,6 @@ export const Header = () => {
           className={s.logo2}
         />
         <img src="/images/btn_06-signup.png" alt="sign in" className={s.logo3} />
-        
       </div>
     </header>
   )
