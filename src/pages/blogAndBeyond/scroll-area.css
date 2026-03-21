@@ -1,15 +1,13 @@
 .scroll-area-wrapper {
   position: relative;
   overflow: hidden;
-  height: 75%;
-  /* Added z-index to ensure scrollbar appears above other elements */
-  /* Added padding-right to accommodate the thumb width that extends beyond track */
+  flex: 1;
   padding-right: 10px;
   z-index: 10;
 }
 
 .scroll-area-content {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   right: 22px;
@@ -23,7 +21,6 @@
   width: 4px;
   height: 100%;
   background-color: white;
-  /* Added z-index for proper layering */
   z-index: 11;
 }
 
@@ -31,12 +28,12 @@
   position: absolute;
   top: 0;
   left: -5px;
-  width: 16px; /* Much wider than the 6px track to create pop-out effect */
-  background-color: white; /* Back to white to match reference design */
+  width: 16px;
+  background-color: white;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Stronger shadow to make white bubble visible against blue background */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(0, 0, 0, 0.1);
   z-index: 12;
 }

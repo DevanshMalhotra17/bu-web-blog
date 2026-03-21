@@ -1,19 +1,9 @@
 import { useState } from "react"
 import ScrollArea from "./scroll-area"
+import Footer from "../../components/partials/Footer"
 import "./mobile.css"
 
-type ViewState = "blog02" | "blog03" | "blog04"
-
-interface BlogPost {
-  id: string
-  title: string
-  date: string
-  authors: string[]
-  excerpt: string
-  fullContent: string
-}
-
-const blogPosts: BlogPost[] = [
+const blogPosts = [
   {
     id: "1",
     title: "CLIMATE CHANGE: SWITCHING THE LENS",
@@ -55,14 +45,14 @@ const blogPosts: BlogPost[] = [
 const categories = ["All", "Academics", "Climate Change", "Finance", "Growth", "Technology"]
 
 export default function BlogBeyond() {
-  const [currentView, setCurrentView] = useState<ViewState>("blog02")
-  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null)
+  const [currentView, setCurrentView] = useState("blog02")
+  const [selectedPost, setSelectedPost] = useState(null)
 
   const handleArchivesClick = () => {
     setCurrentView("blog03")
   }
 
-  const handleReadMoreClick = (post: BlogPost) => {
+  const handleReadMoreClick = (post) => {
     setSelectedPost(post)
     setCurrentView("blog04")
   }
@@ -198,15 +188,7 @@ export default function BlogBeyond() {
         )}
       </main>
 
-      {/* Footer TODO: This is in the components folder. */}
-      <footer className="footer">
-        <span className="footer-text">Powered by</span>
-        {[1, 2, 3, 4, 5].map((i) => (
-          <div key={i} className="footer-logo">
-            <span className="footer-logo-text">LOGO</span>
-          </div>
-        ))}
-      </footer>
+      <Footer />
     </div>
   )
 }
