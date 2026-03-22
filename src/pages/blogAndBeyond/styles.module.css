@@ -248,3 +248,90 @@
     width: 100px;
   }
 }
+
+@media (max-width: 768px) {
+  .container main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .aside {
+    width: 100%;
+    background-color: var(--c-orange);
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  .container main .aside .trapezoid {
+    display: none;
+  }
+
+  .logo1 {
+    transform: none;
+    width: 180px;
+    margin: 0;
+  }
+
+  .container main .aside .categoryList {
+    font-size: 1.1rem;
+    margin-top: 15px;
+    padding: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    transform: none;
+  }
+
+  .sideTextSmall {
+    display: none;
+  }
+
+  .categoryItem {
+    cursor: pointer;
+  }
+
+  .active {
+    border-bottom: 2px solid white;
+  }
+
+  .mainContent {
+    flex: 1;
+    width: 100%;
+  }
+
+  .moleContainer {
+    display: none;
+  }
+
+  .header {
+    height: 70px;
+    padding: 0 15px;
+  }
+
+  .logo2, .logo3 {
+    height: 40px;
+  }
+
+  .logo4 {
+    height: 40px;
+    transform: none;
+  }
+
+  .header > div {
+    position: static;
+    margin-left: auto;
+    gap: 10px;
+  }
+
+  .blogCard {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .blogTitle {
+    font-size: 1.2rem;
+  }
+}
