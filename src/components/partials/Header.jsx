@@ -1,73 +1,101 @@
 import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
 import s from "./styles.module.css";
 
-const navItems = [
-  {
-    path: "/resources",
-    img: "/images/btn_01-resources.png",
-    alt: "Resources"
-  },
-  {
-    path: "/blog",
-    img: "/images/btn_02-blog.png",
-    alt: "Blog & Beyond"
-  },
-  {
-    path: "/lets-talk",
-    img: "/images/btn_03-lets.png",
-    alt: "Let's Talk"
-  },
-  {
-    path: "/", // Or wherever Dollars goes
-    img: "/images/btn_04-dollars.png",
-    alt: "Dollars Thoughts"
-  },
-  {
-    path: "/contribute",
-    img: "/images/btn_05-contrib.png",
-    alt: "I want to Contribute"
-  },
-];
-
 const Header = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
+  function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+    
+    const headerHeight = window.innerHeight * 0.15;
+    const yOffset = -headerHeight;
+
+    window.scrollTo({
+      top: section.offsetTop + yOffset,
+      behavior: "smooth",
+    });
+    closeMobileMenu();
+  }
+
+  const navItems = [
+    { id: "resourcesSection", img: "/images/btn_01-resources.png", alt: "Resources" },
+    { id: "contributeSection", img: "/images/btn_05-contrib.png", alt: "Contribute" },
+    { id: "s4ytSection", img: "/images/btn_04-dollars.png", alt: "Dollars" },
+    { id: "blogSection", img: "/images/btn_02-blog.png", alt: "Blog & Beyond" },
+    { id: "talkSection", img: "/images/btn_03-lets.png", alt: "Let's Talk" },
+    { id: "signupSection", img: "/images/btn_06-signup.png", alt: "Sign Up" },
+  ];
 
   return (
     <header className={s.header}>
-      <div className={s.container}>
-        
-        {/* Logo Section */}
-        <Link to="/" className={s.logoLink}>
-          <img src="/images/weare-logo.png" alt="Building U" className={s.mainLogo} />
-        </Link>
-        
-        {/* Navigation Section */}
-        <nav className={s.navGroup}>
-          {navItems.map((item, index) => {
-            const isActive = location.pathname.startsWith(item.path) && item.path !== "/";
-            return (
-              <Link
-                key={index}
-                to={item.path}
-                className={`${s.navItem} ${isActive ? s.active : ""}`}
-              >
-                <img src={item.img} alt={item.alt} className={s.navIcon} />
-                {/* We rely on the images themselves if they contain the text, 
-                    or fall back to accessible text if needed. Based on the mockup, 
-                    the icons often have the text embedded. If not, we can add spans.
-                */}
-              </Link>
-            );
-          })}
-        </nav>
-        
-        {/* Sign In Button */}
-        <div className={s.signInWrapper}>
-          <Link to="/signin-signup">
-            <img src="/images/btn_06-signup.png" alt="Sign In Up" className={s.signInBtn} />
+      <nav className={s.navLinksWrapper}>
+        <div className={s.headerLogo}>
+          <Link to="/" onClick={closeMobileMenu}>
+            <img src="/images/weare-logo.png" alt="logo" className={s.logoImg} />
           </Link>
         </div>
-        
+
+        {/* Desktop Navigation */}
+        <div className={`${s.navLinks} ${s.desktopNav}`}>
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              className={s.headerButton}
+              onClick={() => scrollToSection(item.id)}
+            >
+              <img src={item.img} alt={item.alt} className={s.navButtonImg} />
+            </button>
+          ))}
+        </div>
+
+        {/* Mobile Menu Icon */}
+        <div className={s.menuIcon} onClick={toggleMobileMenu}>
+          <img src={isMobileMenuOpen ? "/images/beyond.png" : "/images/beyond.png"} alt="menu" className={s.menuToggleImg} />
+        </div>
+      </nav>
+
+      {/* Mobile Offcanvas Menu */}
+      <div className={`${s.mobileOffcanvas} ${isMobileMenuOpen ? s.offcanvasOpen : ""}`}>
+        {/* Backdrop */}
+        <div
+          className={`${s.offcanvasBackdrop} ${isMobileMenuOpen ? s.backdropShow : ""}`}
+          onClick={closeMobileMenu}
+        ></div>
+
+        {/* Offcanvas Panel */}
+        <div className={`${s.offcanvasPanel} ${isMobileMenuOpen ? s.panelShow : ""}`}>
+          <div className={s.offcanvasHeader}>
+            <h3 className={s.offcanvasTitle}>Menu</h3>
+            <button className={s.closeButton} onClick={closeMobileMenu}>
+              <span>&times;</span>
+            </button>
+          </div>
+
+          <div className={s.offcanvasBody}>
+            <div className={s.mobileNavLinks}>
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  className={s.mobileHeaderButton}
+                  onClick={() => scrollToSection(item.id)}
+                >
+                  <img src={item.img} alt={item.alt} />
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </header>
   );

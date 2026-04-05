@@ -12,6 +12,19 @@
 .mainContent {
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollable area adjustments */
+.mainContent :global(.scrollArea) {
+  height: 100%;
+  width: 100%;
+  max-width: 800px;
+}
+
+.mainContent :global(.scrollArea) .content {
+  padding: 20px;
 }
 
 /* Header */
@@ -172,7 +185,7 @@
 
 /* Responsive: sidebar shrinks, content stays big */
 @media (max-width: 1200px) {
-  .container main {
+  .mainContainer {
     grid-template-columns: 30vw 1fr;
   }
 
@@ -196,7 +209,7 @@
 }
 
 @media (max-width: 900px) {
-  .container main {
+  .mainContainer {
     grid-template-columns: 25vw 1fr;
   }
 
@@ -234,7 +247,7 @@
 }
 
 @media (max-width: 768px) {
-  .container main {
+  .mainContainer {
     display: flex;
     flex-direction: column;
   }

@@ -28,57 +28,76 @@ const BlogAndBeyond = () => {
 
   return (
     <Layout showFooter={false}>
-      <div className={`${s.container} ${s.splitLayout}`}>
-        {/* Left Side: Magenta */}
-        <div className={s.leftSide}>
-          <div className={s.contentWrapper}>
-            <h1 className={s.title}>Blog & Beyond</h1>
-            <hr className={s.divider} />
-            <div className={s.buttonsGroup}>
-              <button 
-                className={s.buttonWrap} 
-                onClick={() => setIsExploring(true)}
-              >
-                <img src="/images/btn_01-blog.png" alt="Blog" className={s.iconBubble} />
-                <span>Blog</span>
+      <section className={s.bandbSection} id="blogSection">
+        {/* Desktop Section */}
+        <div className={s.bandbDesktop}>
+          <div className={s.bandbTitle}>
+            <p className={s.bandbTitleText}>Blog & Beyond</p>
+            <hr className={s.bandbTitleLine} />
+          </div>
+          <div className={s.bandbContents}>
+            <div className={s.bandbIconsWrapper}>
+              <button className={s.iconBtn} onClick={() => setIsExploring(true)}>
+                <img src="/images/btn_01-blog.png" alt="blog" className={s.bandbIcons} />
               </button>
-              <a 
-                href="https://www.youtube.com/@building-u" 
-                target="_blank" 
-                rel="noreferrer" 
-                className={s.buttonWrap}
-              >
-                <img src="/images/btn_02-youtube.png" alt="YouTube" className={s.iconYoutube} />
-                <span>Youtube</span>
+              <a href="https://www.youtube.com/@building-u" target="_blank" rel="noreferrer">
+                <img src="/images/btn_02-youtube.png" alt="youtube" className={s.bandbIcons} />
               </a>
-              <a 
-                href="https://open.spotify.com/user/building-u" 
-                target="_blank" 
-                rel="noreferrer" 
-                className={s.buttonWrap}
-              >
-                <img src="/images/btn_03-spotify.png" alt="Spotify Playlist" className={s.iconSpotify} />
-                <span>Spotify Playlist</span>
+              <a href="https://open.spotify.com/user/building-u" target="_blank" rel="noreferrer">
+                <img src="/images/btn_03-spotify.png" alt="spotify" className={s.bandbIcons} />
               </a>
             </div>
+            <div className={s.bandbGoatContainer}>
+              <div className={s.bandbGoatText}>
+                <p className={s.bandbTextboxText}>
+                  We must write stuff about blog and channels of communication
+                </p>
+              </div>
+            </div>
           </div>
-          
-          <div className={s.footerWrapper}>
-            <span className={s.poweredText}>Powered by</span>
-            {[1, 2, 3, 4, 5, 6, 7].map((i) => (
-              <div key={i} className={s.logoCircle}>LOGO</div>
-            ))}
-          </div>
+          <div className={s.bandbBg}></div>
         </div>
 
-        {/* Right Side: Lime Green */}
-        <div className={s.rightSide}>
-          <div className={s.infoBox}>
-            We must write stuff about blog and channels of communication
+        {/* Mobile Section */}
+        <div className={s.bandbMobile}>
+          <div className={s.BlogPhoneBar}>
+            <img
+              src="/images/btn_02-blog.png"
+              alt="BuildingU Logo"
+              className={s.BlogBarLogo}
+            />
           </div>
-          <img src="/images/goat.png" alt="Goat" className={s.goat} />
+          <div className={s.bandbPhoneBar}>
+            <img
+              src="/images/btn_01-blog.png"
+              alt="blog"
+              className={s.bandbChoice}
+              onClick={() => setIsExploring(true)}
+              style={{ cursor: 'pointer' }}
+            />
+            <a href="https://www.youtube.com/@building-u" target="_blank" rel="noreferrer" style={{ display: 'contents' }}>
+              <img
+                src="/images/btn_02-youtube.png"
+                alt="youtube"
+                className={s.bandbChoice}
+              />
+            </a>
+            <a href="https://open.spotify.com/user/building-u" target="_blank" rel="noreferrer" style={{ display: 'contents' }}>
+              <img
+                src="/images/btn_03-spotify.png"
+                alt="spotify"
+                className={s.bandbChoice}
+              />
+            </a>
+          </div>
+          <div className={s.bandbGreen}>
+            <p className={s.bandbGreenText}>
+              We must write stuff about blog and channels.
+            </p>
+            <img src="/images/goat.png" alt="goat" className={s.bandbGreenGoat} />
+          </div>
         </div>
-      </div>
+      </section>
     </Layout>
   );
 };
