@@ -1,0 +1,104 @@
+.header {
+  background-color: var(--c-orange, #f57c00);
+  height: 110px;
+  width: 100%;
+  position: relative;
+  z-index: 100;
+}
+
+.container {
+  max-width: 1400px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.logoLink {
+  height: 70%;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.mainLogo {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+.navGroup {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  flex: 2;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.navItem {
+  height: 100%;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.navItem:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.active {
+  background-color: #ff9d3a; /* Lighter orange from the mock */
+}
+
+.navIcon {
+  height: 60%;
+  max-height: 55px;
+  width: auto;
+  object-fit: contain;
+}
+
+.signInWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding-left: 20px;
+}
+
+.signInBtn {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+.signInBtn:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 1000px) {
+  .header {
+    height: 80px;
+  }
+  
+  .navIcon {
+    max-height: 40px;
+  }
+  
+  .signInBtn {
+    height: 55px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navGroup {
+    display: none; /* Hide full nav on small screens, normally replaced by hamburger */
+  }
+}

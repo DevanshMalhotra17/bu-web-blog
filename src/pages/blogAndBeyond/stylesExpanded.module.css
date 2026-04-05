@@ -1,18 +1,12 @@
-.container {
+.mainContainer {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 35vw 1fr;
   background-image: url("/images/background.png");
   background-size: cover;
   background-position: center center;
   background-color: var(--c-blue);
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.container main {
-  flex: 1;
-  display: grid;
-  grid-template-columns: 35vw 1fr;
+  min-height: calc(100vh - 110px);
 }
 
 .mainContent {
